@@ -12,7 +12,7 @@ terraform {
       source  = "hashicorp/tls"
       version = "4.0.4"
     }
-    githu = {
+    github = {
       source  = "integrations/github"
       version = "5.37.0"
     }
