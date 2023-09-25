@@ -22,3 +22,24 @@ tf/apply:
 .PHONY: tf/destroy
 tf/destroy:
 	${TERRAGRUNT_CMD} destroy -terragrunt-log-level debug
+
+tf/apply/audit:
+	cd live/${ENV}/audit && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
+
+tf/apply/gitlab-permissions:
+	cd live/${ENV}/gitlab-permissions && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
+
+tf/apply/gitlab-runners:
+	cd live/${ENV}/gitlab-runners && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
+
+tf/apply/oidc:
+	cd live/${ENV}/oidc && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
+
+tf/init/renovate-runners:
+	cd live/${ENV}/renovate-runners && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
+
+tf/plan/renovate-runners:
+	cd live/${ENV}/renovate-runners && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
+
+tf/apply/renovate-runners:
+	cd live/${ENV}/renovate-runners && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
