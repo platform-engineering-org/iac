@@ -41,6 +41,8 @@ repos:
           - --tf-init-args=-upgrade
       - id: terraform_fmt
       - id: terraform_validate
+      - id: terragrunt_fmt
+      - id: terragrunt_validate
   - repo: https://github.com/mrtazz/checkmake
     rev: 0.2.2
     hooks:
