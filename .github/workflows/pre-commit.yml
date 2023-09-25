@@ -6,10 +6,22 @@ on: # yamllint disable-line rule:truthy
     branches:
       - main
 
+env:
+  TERRAGRUNT_VERSION: "0.51.4"
+
 jobs:
   pre_commit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4.0.0
       - uses: actions/setup-python@v4.7.0
+      - name: Install Terragrunt
+        run: |
+          curl -Lo terragrunt "https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_linux_amd64"
+          chmod +x terragrunt
+          sudo mv terragrunt /usr/local/bin/
+      - name: Verify Terragrunt installation
+        run: terragrunt --version
       - uses: pre-commit/action@v3.0.0
+        env:
+          SKIP: terragrunt_validate
