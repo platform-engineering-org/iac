@@ -1,15 +1,15 @@
-provider aws = {}
+provider "aws" {}
 
-provider gitlab = {
+provider "gitlab" {
   token    = var.token
   base_url = var.base_url
   insecure = var.insecure
 }
 
-provider local = {}
+provider "local" {}
 
-provider null = {}
+provider "null" {}
 
-provider tls = {}
+provider "tls" {}
 
-provider random = {}
+provider "random" {}

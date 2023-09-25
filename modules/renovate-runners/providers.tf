@@ -1,1 +1,1 @@
-provider github = {}
+provider "github" {}

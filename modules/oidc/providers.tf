@@ -1,7 +1,10 @@
-provider aws = {}
+provider "aws" {}
 
-provider http = {}
+provider "http" {}
 
-provider tls = {}
+provider "tls" {}
 
-provider github = {}
+provider "github" {
+  token = local.github.token
+  owner = var.owner
+}

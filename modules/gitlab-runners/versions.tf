@@ -5,7 +5,7 @@ terraform {
       version = "5.17.0"
     }
     gitlab = {
-      source = "gitlabhq/gitlab"
+      source  = "gitlabhq/gitlab"
       version = "16.3.0"
     }
     local = {
