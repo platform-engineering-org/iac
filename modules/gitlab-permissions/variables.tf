@@ -17,13 +17,13 @@ variable "base_url" {
 variable "top_level_group_name" {
   type        = string
   description = "GitLab top level group name"
-  sensitive = true
+  sensitive   = true
 }
 
 variable "top_level_group_path" {
   type        = string
   description = "GitLab top level group path"
-  sensitive = true
+  sensitive   = true
 }
 
 variable "ldap_developers_group" {
@@ -41,23 +41,23 @@ variable "ldap_owners_group" {
 variable "gitlab_bot_user_id" {
   type        = number
   description = "GitLab bot user id"
-  sensitive = true
+  sensitive   = true
 }
 
 variable "gitlab_bot_user_name" {
   type        = string
   description = "GitLab bot user name"
-  sensitive = true
+  sensitive   = true
 }
 
 variable "gitlab_bot_user_username" {
   type        = string
   description = "GitLab bot user username"
-  sensitive = true
+  sensitive   = true
 }
 
 variable "gitlab_bot_user_email" {
   type        = string
   description = "GitLab bot user email"
-  sensitive = true
+  sensitive   = true
 }

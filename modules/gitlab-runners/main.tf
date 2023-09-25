@@ -57,8 +57,8 @@ module "runner-instance-1" {
 
   environment = var.environment
 
-  vpc_id              = module.vpc.vpc_id
-  subnet_id           = element(module.vpc.private_subnets, 0)
+  vpc_id    = module.vpc.vpc_id
+  subnet_id = element(module.vpc.private_subnets, 0)
 
   runner_gitlab_registration_config = {
     registration_token = var.registration_token_runner_1
@@ -106,8 +106,8 @@ module "runner-instance-1" {
   ]
 
   runner_worker_docker_options = {
-    privileged         = "true"
-    volumes = ["/cache",  "/certs/client"]
+    privileged = "true"
+    volumes    = ["/cache", "/certs/client"]
   }
 
   runner_instance = {
@@ -119,7 +119,7 @@ module "runner-instance-1" {
   }
 
   runner_cloudwatch = {
-    enable = "true"
+    enable         = "true"
     log_group_name = "${var.runner_name}-1"
   }
 
@@ -132,7 +132,7 @@ module "runner-instance-1" {
   }
 
   runner_worker_docker_machine_instance = {
-      types = ["t3.micro"]
+    types = ["t3.micro"]
   }
 
   runner_networking = {
@@ -140,11 +140,11 @@ module "runner-instance-1" {
   }
 
   runner_gitlab_token_secure_parameter_store = "runner-token-1"
-  runner_sentry_secure_parameter_store_name = "sentry-dsn-1"
+  runner_sentry_secure_parameter_store_name  = "sentry-dsn-1"
   runner_role = {
     role_profile_name = "runner-1"
   }
-  iam_object_prefix = "1"
+  iam_object_prefix                        = "1"
   runner_terminate_ec2_lifecycle_hook_name = "terminate-instances-1"
 }
 
@@ -154,8 +154,8 @@ module "runner-instance-2" {
 
   environment = var.environment
 
-  vpc_id              = module.vpc.vpc_id
-  subnet_id           = element(module.vpc.private_subnets, 0)
+  vpc_id    = module.vpc.vpc_id
+  subnet_id = element(module.vpc.private_subnets, 0)
 
   runner_gitlab_registration_config = {
     registration_token = var.registration_token_runner_2
@@ -204,7 +204,7 @@ module "runner-instance-2" {
 
   runner_worker_docker_options = {
     privileged = "true"
-    volumes    = ["/cache",  "/certs/client"]
+    volumes    = ["/cache", "/certs/client"]
   }
 
   runner_instance = {
@@ -221,26 +221,26 @@ module "runner-instance-2" {
   }
 
   runner_gitlab = {
-      url       = var.gitlab_url
+    url = var.gitlab_url
   }
 
   runner_worker_docker_machine_instance_spot = {
-      max_price = "on-demand-price"
+    max_price = "on-demand-price"
   }
 
   runner_worker_docker_machine_instance = {
-      types = ["t3.micro"]
+    types = ["t3.micro"]
   }
 
   runner_networking = {
-      allow_incoming_ping_security_group_ids = [data.aws_security_group.default.id]
+    allow_incoming_ping_security_group_ids = [data.aws_security_group.default.id]
   }
 
   runner_gitlab_token_secure_parameter_store = "runner-token-2"
-  runner_sentry_secure_parameter_store_name = "sentry-dsn-2"
+  runner_sentry_secure_parameter_store_name  = "sentry-dsn-2"
   runner_role = {
     role_profile_name = "runner-2"
   }
-  iam_object_prefix = "2-"
+  iam_object_prefix                        = "2-"
   runner_terminate_ec2_lifecycle_hook_name = "terminate-instances-2"
 }

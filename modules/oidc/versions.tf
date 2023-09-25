@@ -1,18 +1,18 @@
 terraform {
   required_providers {
-    provider aws = {
+    aws = {
       source  = "hashicorp/aws"
       version = "5.17.0"
     }
-    provider http = {
+    http = {
       source  = "hashicorp/http"
       version = "3.4.0"
     }
-    provider tls = {
+    tls = {
       source  = "hashicorp/tls"
       version = "4.0.4"
     }
-    provider github = {
+    githu = {
       source  = "integrations/github"
       version = "5.37.0"
     }

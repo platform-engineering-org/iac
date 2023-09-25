@@ -8,11 +8,6 @@ locals {
   )
 }
 
-provider "github" {
-  token = local.github.token
-  owner = var.owner
-}
-
 data "http" "github_actions_openid_configuration" {
   url = "https://token.actions.githubusercontent.com/.well-known/openid-configuration"
 }
