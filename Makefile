@@ -36,10 +36,10 @@ tf/apply/oidc:
 	cd live/${ENV}/oidc && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
 
 tf/init/renovate-runners:
-	cd live/${ENV}/renovate-runners && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
+	cd live/${ENV}/renovate-runners && terragrunt run-all --terragrunt-non-interactive init
 
 tf/plan/renovate-runners:
-	cd live/${ENV}/renovate-runners && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
+	cd live/${ENV}/renovate-runners && terragrunt run-all --terragrunt-non-interactive plan
 
 tf/apply/renovate-runners:
 	cd live/${ENV}/renovate-runners && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
