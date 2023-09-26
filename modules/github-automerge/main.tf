@@ -10,6 +10,6 @@ resource "github_branch_protection" "main_branch_protection" {
   pattern       = "main"
 
   required_pull_request_reviews {
-    pull_request_bypassers = ["/platform-engineering-bot"]
+    pull_request_bypassers = ["/${var.bot_user_name}"]
   }
 }

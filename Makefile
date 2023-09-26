@@ -58,3 +58,6 @@ tf/plan/github-automerge:
 
 tf/apply/github-automerge:
 	cd live/${ENV}/github-automerge && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
+
+tf/destroy/github-automerge:
+	cd live/${ENV}/github-automerge && terragrunt run-all --terragrunt-non-interactive destroy -auto-approve
