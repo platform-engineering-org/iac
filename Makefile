@@ -43,3 +43,9 @@ tf/plan/renovate-runners:
 
 tf/apply/renovate-runners:
 	cd live/${ENV}/renovate-runners && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
+
+tf/import/renovate-runners:
+	cd live/${ENV}/renovate-runners && terragrunt import github_repository.repository renovate-runner
+
+tf/state/renovate-runners:
+	cd live/${ENV}/renovate-runners && terragrunt state show github_repository.repository
