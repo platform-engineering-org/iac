@@ -7,3 +7,8 @@ variable "github_token" {
   description = "GitHub access token used to configure the provider"
   type        = string
 }
+
+variable "bot_user_name" {
+  type        = string
+  description = "Bot user name"
+}
