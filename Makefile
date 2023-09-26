@@ -49,3 +49,12 @@ tf/import/renovate-runners:
 
 tf/state/renovate-runners:
 	cd live/${ENV}/renovate-runners && terragrunt state show github_repository.repository
+
+tf/init/github-automerge:
+	cd live/${ENV}/github-automerge && terragrunt run-all --terragrunt-non-interactive init
+
+tf/plan/github-automerge:
+	cd live/${ENV}/github-automerge && terragrunt run-all --terragrunt-non-interactive plan
+
+tf/apply/github-automerge:
+	cd live/${ENV}/github-automerge && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
