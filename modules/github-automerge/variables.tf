@@ -1,6 +1,13 @@
-variable "owner" {
+variable "owner_1" {
   description = "GitHub owner used to configure the provider"
   type        = string
+  default     = ""
+}
+
+variable "owner_2" {
+  description = "GitHub owner used to configure the provider"
+  type        = string
+  default     = ""
 }
 
 variable "github_token" {
