@@ -70,7 +70,7 @@ module "runner-instance-1" {
   }
 
   runner_worker_cache = {
-    bucket_prefix = "1-"
+    bucket_prefix = "1"
     create        = "true"
     versioning    = "true"
     shared        = "true"
@@ -132,7 +132,7 @@ module "runner-instance-1" {
   }
 
   runner_worker_docker_machine_instance = {
-    types = ["t3.micro"]
+    types = var.docker-machine-types
   }
 
   runner_networking = {
@@ -167,7 +167,7 @@ module "runner-instance-2" {
   }
 
   runner_worker_cache = {
-    bucket_prefix = "2-"
+    bucket_prefix = "2"
     create        = "true"
     versioning    = "true"
     shared        = "true"
@@ -229,7 +229,7 @@ module "runner-instance-2" {
   }
 
   runner_worker_docker_machine_instance = {
-    types = ["t3.micro"]
+    types = var.docker-machine-types
   }
 
   runner_networking = {
@@ -241,6 +241,6 @@ module "runner-instance-2" {
   runner_role = {
     role_profile_name = "runner-2"
   }
-  iam_object_prefix                        = "2-"
+  iam_object_prefix                        = "2"
   runner_terminate_ec2_lifecycle_hook_name = "terminate-instances-2"
 }

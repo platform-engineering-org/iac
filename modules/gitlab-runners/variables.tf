@@ -70,3 +70,9 @@ variable "user" {
   description = "User name"
   type        = string
 }
+
+variable "docker-machine-types" {
+  description = "Gitlab runner docker machine type"
+  type        = list(string)
+  default     = ["t3.micro"]
+}
