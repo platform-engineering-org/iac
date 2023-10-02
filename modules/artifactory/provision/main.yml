@@ -1,0 +1,85 @@
+- name: Artifactory IaC
+  hosts: all
+  gather_facts: false
+  vars:
+    license_string: "{{ lookup('amazon.aws.aws_secret', 'artifactory') | from_json}}"
+    admin_user: "{{ license_string.username }}"
+    admin_password: "{{ license_string.password }}"
+    env: "{{ ENV }}"
+
+  tasks:
+    - name: Wait until the instance is ready
+      ansible.builtin.wait_for_connection:
+
+    - name: Gather facts for first time
+      ansible.builtin.setup:
+
+    - name: Artifactory repository added
+      become: true
+      ansible.builtin.yum_repository:
+        name: artifactory-pro-rpms
+        description: artifactory Pro
+        baseurl: https://releases.jfrog.io/artifactory/artifactory-pro-rpms/
+
+    - name: Artifactory Pro installed
+      become: true
+      ansible.builtin.dnf:
+        name: jfrog-artifactory-pro
+        update_cache: true
+        disable_gpg_check: true
+        state: present
+
+    - name: Create /opt/jfrog/artifactory/var/etc/access directory
+      become: true
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        owner: artifactory
+        group: artifactory
+        mode: u=rwx,g=rx
+      with_items:
+        - /opt/jfrog/artifactory/var/etc/access
+        - /opt/jfrog/artifactory/var/etc/artifactory
+
+    - name: Re-configure built-in administrator creds
+      become: true
+      ansible.builtin.template:
+        src: "{{ playbook_dir }}/templates/bootstrap.creds.j2"
+        dest: /opt/jfrog/artifactory/var/etc/access/bootstrap.creds
+        owner: artifactory
+        group: artifactory
+        mode: u=rw
+
+    - name: Set license for non STAGE environment
+      ansible.builtin.set_fact:
+        license: "{{ license_string.artifactory_license1 }}"
+      when: env != "stage"
+
+    - name: Set license for STAGE environment
+      ansible.builtin.set_fact:
+        license: "{{ license_string.artifactory_license2 }}"
+      when: env == "stage"
+
+    - name: Use license strings
+      become: true
+      ansible.builtin.copy:
+        dest: /opt/jfrog/artifactory/var/etc/artifactory/artifactory.lic
+        content: "{{ license }}"
+        mode: "0644"
+
+    - name: Artifactory service is enabled and running
+      become: true
+      ansible.builtin.systemd:
+        state: started
+        enabled: true
+        name: artifactory
+
+    - name: Make sure artifactory is healthy
+      ansible.builtin.uri:
+        url: http://{{ inventory_hostname }}:8082/router/api/v1/system/health
+        timeout: 130
+        status_code: 200
+      register: result
+      until: result is succeeded
+      retries: 25
+      delay: 5
