@@ -24,10 +24,19 @@ tf/destroy:
 	${TERRAGRUNT_CMD} destroy -terragrunt-log-level debug
 
 tf/apply/audit:
-	cd live/${ENV}/audit && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
+	cd live/${ENV}/audit && terragrunt run-all --terragrunt-non-interactive apply
 
-tf/apply/gitlab-permissions:
-	cd live/${ENV}/gitlab-permissions && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
+tf/init/gitlab-authorization:
+	cd live/${ENV}/gitlab-authorization && terragrunt run-all --terragrunt-non-interactive init
+
+tf/plan/gitlab-authorization:
+	cd live/${ENV}/gitlab-authorization && terragrunt run-all --terragrunt-non-interactive plan
+
+tf/apply/gitlab-authorization:
+	cd live/${ENV}/gitlab-authorization && terragrunt run-all --terragrunt-non-interactive apply
+
+tf/destroy/gitlab-authorization:
+	cd live/${ENV}/gitlab-authorization && terragrunt run-all --terragrunt-non-interactive destroy
 
 tf/init/gitlab-runners:
 	cd live/${ENV}/gitlab-runners && terragrunt run-all --terragrunt-non-interactive init
@@ -36,7 +45,7 @@ tf/plan/gitlab-runners:
 	cd live/${ENV}/gitlab-runners && terragrunt run-all --terragrunt-non-interactive plan
 
 tf/apply/gitlab-runners:
-	cd live/${ENV}/gitlab-runners && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
+	cd live/${ENV}/gitlab-runners && terragrunt run-all --terragrunt-non-interactive apply
 
 tf/destroy/gitlab-runners:
 	cd live/${ENV}/gitlab-runners && terragrunt run-all --terragrunt-non-interactive destroy
@@ -51,7 +60,7 @@ tf/plan/renovate-runners:
 	cd live/${ENV}/renovate-runners && terragrunt run-all --terragrunt-non-interactive plan
 
 tf/apply/renovate-runners:
-	cd live/${ENV}/renovate-runners && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
+	cd live/${ENV}/renovate-runners && terragrunt run-all --terragrunt-non-interactive apply
 
 tf/import/renovate-runners:
 	cd live/${ENV}/renovate-runners && terragrunt import github_repository.repository renovate-runner
@@ -66,7 +75,7 @@ tf/plan/github-automerge:
 	cd live/${ENV}/github-automerge && terragrunt run-all --terragrunt-non-interactive plan
 
 tf/apply/github-automerge:
-	cd live/${ENV}/github-automerge && terragrunt run-all --terragrunt-non-interactive apply -auto-approve
+	cd live/${ENV}/github-automerge && terragrunt run-all --terragrunt-non-interactive apply
 
 tf/destroy/github-automerge:
-	cd live/${ENV}/github-automerge && terragrunt run-all --terragrunt-non-interactive destroy -auto-approve
+	cd live/${ENV}/github-automerge && terragrunt run-all --terragrunt-non-interactive destroy
