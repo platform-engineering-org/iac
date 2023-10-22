@@ -1,9 +1,5 @@
 terraform {
-  source = "../../../modules//gitlab-permissions"
-  extra_arguments "var-file" {
-    commands  = ["apply", "plan"]
-    arguments = ["-var-file=ci.tfvars"]
-  }
+  source = "../../../modules//gitlab-authorization"
 }
 
 include "root" {
