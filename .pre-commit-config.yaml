@@ -31,7 +31,7 @@ repos:
       - id: markdownlint
         args: [-s, .markdownlint.rb]
   - repo: https://github.com/maxbrunet/pre-commit-renovate
-    rev: 37.183.0
+    rev: 37.198.0
     hooks:
       - id: renovate-config-validator
   - repo: https://github.com/antonbabenko/pre-commit-terraform
