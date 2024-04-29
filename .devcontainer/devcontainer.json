@@ -2,7 +2,7 @@
     "name": "iac",
     "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu-22.04",
     "features": {
-        "ghcr.io/devcontainers/features/terraform:1.3.4": {
+        "ghcr.io/devcontainers/features/terraform:1.3.6": {
             "version": "1.5.7",
             "terragrunt": "0.51.4"
         },
