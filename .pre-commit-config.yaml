@@ -25,15 +25,6 @@ repos:
       - id: check-added-large-files
       - id: check-json
       - id: check-yaml
-  - repo: https://github.com/markdownlint/markdownlint
-    rev: v0.13.0
-    hooks:
-      - id: markdownlint
-        args: [-s, .markdownlint.rb]
-  - repo: https://github.com/maxbrunet/pre-commit-renovate
-    rev: 37.368.8
-    hooks:
-      - id: renovate-config-validator
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.89.1
     hooks:
