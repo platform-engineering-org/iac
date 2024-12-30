@@ -11,7 +11,7 @@ data "aws_security_group" "default" {
 # kics-scan ignore-line
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "5.13.0"
+  version = "5.17.0"
 
   name = "vpc-${var.environment}"
   cidr = "10.0.0.0/16"
@@ -33,7 +33,7 @@ module "vpc" {
 
 module "vpc_endpoints" {
   source  = "terraform-aws-modules/vpc/aws//modules/vpc-endpoints"
-  version = "5.13.0"
+  version = "5.17.0"
 
   vpc_id = module.vpc.vpc_id
 
@@ -53,7 +53,7 @@ module "vpc_endpoints" {
 
 module "runner-instance-1" {
   source  = "cattle-ops/gitlab-runner/aws"
-  version = "7.14.0"
+  version = "8.1.0"
 
   environment = var.environment
 
@@ -150,7 +150,7 @@ module "runner-instance-1" {
 
 module "runner-instance-2" {
   source  = "cattle-ops/gitlab-runner/aws"
-  version = "7.14.0"
+  version = "8.1.0"
 
   environment = var.environment
 
