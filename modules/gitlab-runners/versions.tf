@@ -2,15 +2,15 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "5.70.0"
+      version = "6.43.0"
     }
     gitlab = {
       source  = "gitlabhq/gitlab"
-      version = "17.4.0"
+      version = "18.11.0"
     }
     local = {
       source  = "hashicorp/local"
-      version = "2.5.2"
+      version = "2.8.0"
     }
     null = {
       source  = "hashicorp/null"
@@ -18,11 +18,11 @@ terraform {
     }
     tls = {
       source  = "hashicorp/tls"
-      version = "4.0.6"
+      version = "4.2.1"
     }
     random = {
       source  = "hashicorp/random"
-      version = "3.6.3"
+      version = "3.8.1"
     }
   }
 }
